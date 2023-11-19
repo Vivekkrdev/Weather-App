@@ -4,6 +4,21 @@ const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 
+if (navigator.geolocation) {
+    // Get the user's current location
+    navigator.geolocation.getCurrentPosition(function(position) {
+        // The geolocation request was successful
+        console.log(position.latitude);
+        console.log(position.longitude);
+        console.log(position.accuracy);
+    }, function(error) {
+        // The geolocation request was unsuccessful
+        console.log(error);
+    });
+} else {
+    // The browser does not support the Geolocation API
+    console.log('The browser does not support the Geolocation API');
+}
 search.addEventListener('click', () => {
 
     const APIKey = '282859b6f2c3b2475fc1db747a657a42';
